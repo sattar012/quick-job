@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<section class="discription">
+  <div id="titlebar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 col-sm-12">
+          <!-- <h3>Microsoft</h3> -->
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="home.html">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Top Recruiter</a></li>
+              <!-- <li class="breadcrumb-item active" aria-current="page">Microsoft</li> -->
+            </ol>
+          </nav>
+        </div>
+        <div class="col-md-5 col-sm-12">
+          <div class="right-side">
+            <a href="signin.html" class="btn btn-info bn">
+              Apply Now!
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    {% for data in details.all%}
+    <div class="row">
+
+      <div class="col-xl-8 col-lg-8 content-right-offset">
+        <div class="single-page-section">
+          <h2>{{ data.companyName}}</h2>
+          <p>{{ data.description }}</p>
+          <div class="single-page-section">
+            <h2>Location</h2>
+            <iframe class="maps"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26371286.49766774!2d-113.71643865663573!3d36.21152009978547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited%20States!5e0!3m2!1sen!2sin!4v1627041346917!5m2!1sen!2sin"
+              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4 col-lg-4">
+        <div class="job-box">
+          <div class="job-box-head text-center">
+            {{ data.companyName}}
+          </div>
+          <div class="job-box-inner">
+            <div class="logo">
+              <a href="#">
+                <img src="{{ data.icon.url}}" alt="">
+              </a>
+            </div>
+            <h6 class="dets">Founded:{{data.founddate }}</h6>
+            <h6 class="dets">HeadQuaters: {{data.headquarters}} </h6>
+            <h6 class="dets">Founder:{{data.founder}}</h6>
+            <h6 class="dets">Revenue: {{data.revenue}}</h6>
+            <h6 class="dets">Number of employees:{{data.employees}} </h6>
+            <h6 class="dets">Website:{{data.url}} </h6>
+            <div class="d-grid gap-2 buttons">
+              <button class="btn btn-info bn" type="button">Apply Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</section>
+
+{% endblock%}

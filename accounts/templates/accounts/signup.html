@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+      <!-- Register page -->
+      <section class="log">
+        <div class="container">
+          <div class="row px-3">
+            <div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0">
+              <div class="img-left d-none d-md-flex"></div>
+    
+              <div class="card-body">
+                <h4 class="title text-center mt-4">
+                  Sign Up!
+                </h4>
+                <form class="form-box px-3" method="POST" action="{% url 'signup' %}">
+                  {% csrf_token %}
+                  <div class="form-input">
+                    <span><i class="fa fa-user"></i></span>
+                    <input type="text" name="name" placeholder="Name" tabindex="10" required="">
+                  </div>
+                  <div class="form-input">
+                    <span><i class="fa fa-user"></i></span>
+                    <input type="text" name="username" placeholder="Username" tabindex="10" required="">
+                  </div>
+                  <div class="form-input">
+                    <span><i class="fa fa-envelope"></i></span>
+                    <input type="email" name="email" placeholder="Email Id" required="">
+                  </div>
+                  <div class="form-input">
+                    <span><i class="fa fa-key"></i></span>
+                    <input type="password" name="password1" placeholder="Password" required="">
+                  </div>
+                  <div class="form-input">
+                    <span><i class="fa fa-key"></i></span>
+                    <input type="password" name="password2" placeholder="Confirm password" required="">
+                  </div>
+                  
+    
+                  <div class="mb-3">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="cb1" name="">
+                      <label class="custom-control-label" for="cb1">Remember me</label>
+                    </div>
+                  </div>
+    
+                  <div class="mb-3">
+                    <button type="submit" class="btn btn-block text-uppercase">
+                      Register
+                    </button>
+                  </div>
+    
+                  <hr class="my-4">
+    
+                  <div class="text-center mb-2">
+                    Do you have an account?
+                    <a href="{% url 'login'%}" class="register-link">
+                      Login
+                    </a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {% endblock%}

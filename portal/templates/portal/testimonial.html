@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Testimonials -->
+<section>
+  <div id="titlebar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>Testimonials</h3>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="home.html">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Testimonials</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="testimonials">
+    <div class="container">
+      <div class="row">
+        {% for testi in test.all%}
+        <div class="col-md-4 text-center">
+          <div class="profile">
+            <img src="{{ testi.image.url}}" class="user" alt="">
+            <p>
+              {{testi.body}}
+            </p>
+            <h4>{{testi.title}} <span>{{ testi.job}}</span></h4>
+          </div>
+        </div>
+        {% endfor%}
+      </div>
+    </div>
+  </section>
+</section>
+
+{% endblock%}
