@@ -46,9 +46,9 @@
           </div>
           <!-- search -->
           <div class="col-md-6 d-md-flex justify-content-end mb-3">
-            <form class="searchform order-lg-last">
+            <form class="searchform order-lg-last" method="GET" action="{% url 'search'%}">
               <div class="form-group d-flex">
-                <input type="text" class="form-control pl-3" placeholder="Search">
+                <input type="text" class="form-control pl-3" placeholder="Search" name="search" id="search">
                 <button type="submit" class="form-control search">
                   <span class="fa fa-search text-dark"></span>
                 </button>
@@ -181,7 +181,7 @@
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
           <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Useful Links</h5>
           <p>
-            <a href="blog.html" class="text-white" style="text-decoration: none;">Blog</a>
+            <a href="{% url 'allblogs'%}" class="text-white" style="text-decoration: none;">Blog</a>
           </p>
           <p>
             <a href="{% url 'testimonial'%}" class="text-white" style="text-decoration: none;">Testimonials</a>

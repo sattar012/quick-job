@@ -1,0 +1,139 @@
+{% extends 'base.html' %} {% block content %}
+<!-- JOB DESCRIPTION CONTENT -->
+
+<section class="description">
+    <div id="titlebar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-sm-12">
+                    <h3>{{ job_detail.job_name}}</h3>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home'%}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">IT</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ job_detail.job_name}}</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-md-5 col-sm-12">
+                    <div class="right-side">
+                        <a href="signin.html" class="btn btn-info bn">
+                            Apply Now!
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-8 content-right-offset">
+                <div class="single-page-section">
+                    <h2>Job Overview</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="job-prop">
+                                <i class="fa fa-map-marker"></i>
+                                <span>Location</span>
+                                <h6>{{ job_detail.place}}</h6>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="job-prop">
+                                <i class="fa fa-briefcase"></i>
+                                <span>Job Type</span>
+                                <h6>Full Time</h6>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="job-prop">
+                                <i class="fa fa-money"></i>
+                                <span>Salary</span>
+                                <h6>{{ job_detail.salary }} Lacs p.a</h6>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="job-prop">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <span>Date Posted</span>
+                                <h6> {{job_detail.pub_date}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-page-section">
+                    <h2>Additional Details</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="job-prop">
+                                <i class="fa fa-phone"></i>
+                                <span>Phone Number</span>
+                                <h6> {{job_detail.phonenumber}}</h6>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="job-prop">
+                                <i class="fa fa-eye"></i>
+                                <span>Job View</span>
+                                <h6>{{job_detail.jobview}}</h6>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="job-prop">
+                                <i class="fa fa-hashtag"></i>
+                                <span> Job ID</span>
+                                <h6>{{job_detail.jobid}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-page-section">
+                        <h2>Job discription</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="job-prop">
+                                    <h6>{{job_detail.jobdescription}}
+
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-page-section">
+                    <h2>Location</h2>
+                    <iframe class="maps"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.31698201728!2d78.26795904304946!3d17.412299801300147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1626945192696!5m2!1sen!2sin"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4">
+                <div class="job-box">
+                    <div class="job-box-head text-center">
+                        Company Details
+                    </div>
+                    <div class="job-box-inner">
+                        <div class="logo">
+                            <a href="#">
+                                <img src="http://quickjob.bylancer.com/storage/products/default.png" alt="">
+                            </a>
+                        </div>
+                        <h5 class="name">Company Name</h5>
+                        <h6 class="dets">Years In Business: 7</h6>
+                        <h6 class="dets">Employees: 150-200</h6>
+                        <h6 class="dets">Working Hours: 10am to 5pm</h6>
+                        <div class="d-grid gap-2 buttons">
+                            <button class="btn btn-info bn" type="button">Apply Now</button>
+                            <button class="btn btn-info bn" type="button">Login To Chat</button>
+                        </div>
+                    </div>
+                    <div class="job-box-social">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+{% endblock %}

@@ -33,8 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'portal.apps.PortalConfig',
     'accounts.apps.AccountsConfig',
-    'jobs.apps.JobsConfig',
-    'polls.apps.PollsConfig',
+    'blogs.apps.BlogsConfig',
+    'pluto.apps.PlutoConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,9 +128,12 @@ USE_TZ = True
 
 
 STATICFILES_DIRS=[
-     os.path.join(BASE_DIR, 'quickjob/static/')
+     os.path.join(BASE_DIR, 'quickjob/static/'),
+
+     
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'pluto/static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

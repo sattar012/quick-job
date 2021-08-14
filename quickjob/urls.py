@@ -12,7 +12,7 @@ urlpatterns = [
     path('', views.home, name= 'home'),
     path('accounts/', include('accounts.urls')),
     path('portal/', include('portal.urls')),
-    path('polls/', include('polls.urls')),
-    # path('jobs/', include('jobs.urls')),
+    path('pluto/', include('pluto.urls')),
+    path('blogs/', include('blogs.urls')),
     
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

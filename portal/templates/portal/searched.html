@@ -1,0 +1,148 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- ALL JOBS PAGE  -->
+<section class="alljobs">
+    <div id="titlebar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>We Found jobs for you!</h3>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home'%}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Browse Jobs
+                            </li>
+                        </ol>
+                    </nav>
+                    <div class="searchjobs text-center">
+                        <input type="text" class="form-control" placeholder="Search By Keyword" />
+                        <input type="text" class="form-control" placeholder="Search By Company" />
+                        <input type="text" class="form-control" placeholder="Search By Location" />
+                        <input type="button" class="btn btn-primary" value="Find Job" />
+                    </div>
+                    <div class="margin-top-10">
+                        <ul class="categories-list">
+                            <li><a href="#">Accounting & Finance</a></li>
+                            <li><a href="#">Education & Training</a></li>
+                            <li><a href="#">Graphics Design</a></li>
+                            <li><a href="#">Health & Hospital</a></li>
+                            <li><a href="#">Restaurant & Food</a></li>
+                            <li><a href="#">Website & Software</a></li>
+                            <li><a href="#">Security & Safety</a></li>
+                            <li><a href="#">Real Estate</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <!-- <div class="slider fixed col-xl-3 col-lg-4">
+                <div class="slider-widget">
+                    <h6>Job Type</h6>
+
+                    <ul>
+
+                        <li>
+                            {% for categ in items %}
+
+                            <div class="checkbox">
+                                <input type="checkbox" name="job-type" value=" " />
+
+                                <a href="bjobs?category={{categ.id}}" style="color: black">
+                                    <label for="job-type"><span class="checkbox-icon"></span>{{ categ.name}}</label></a>
+                            </div>
+                            {% endfor%}
+                        </li>
+
+                    </ul>
+
+                </div> -->
+
+            <!-- <div class="slider-widget">
+            <h6>Salary Type</h6>
+            <ul>
+              <li>
+                <div class="checkbox">
+                  <input type="checkbox" name="job-type" value="">
+                  <label for="job-type"><span class="checkbox-icon"></span>Day</label>
+                </div>
+              </li>
+              <li>
+                <div class="checkbox">
+                  <input type="checkbox" name="job-type" value="">
+                  <label for="job-type"><span class="checkbox-icon"></span>Hours</label>
+                </div>
+              </li>
+              <li>
+                <div class="checkbox">
+                  <input type="checkbox" name="job-type" value="">
+                  <label for="job-type"><span class="checkbox-icon"></span>Month</label>
+                </div>
+              </li>
+              <li>
+                <div class="checkbox">
+                  <input type="checkbox" name="job-type" value="">
+                  <label for="job-type"><span class="checkbox-icon"></span>Year</label>
+                </div>
+              </li>
+            </ul>
+          </div> -->
+            <!-- </div> -->
+            <div class="col-xl-9 col-lg-8">
+                <h5>Search Results</h5>
+                <div class="notify-box margin-top-15">
+                    <span class="font-weight-500">Jobs Found</span>
+                </div>
+                <!-- Latest Jobs (code) -->
+
+                <section id="Latest-jobs">
+                    <div class="container">
+                        {% for job in search_job %}
+                        <div class="companydetails" onclick="window.location='{% url 'detail' job.id %}';"
+                            style="cursor: pointer;">
+                            <div class="job-update">
+                                <h5>
+                                    <b>{{ job.job_name}}<button type="button" class="btn btn-outline-info jtype">
+                                            {{ job.category}}
+                                        </button></b>
+                                </h5>
+                                <p>{{ job.company}}</p>
+                                <i class="fa fa-briefcase"></i>
+                                <span>{{job.experience}} years </span>
+                                <i class="fa fa-inr"></i> <span>{{job.salary}} p.a</span>
+                                <i class="fa fa-map-marker"></i> <span>{{job.place}}</span>
+
+                            </div>
+                            <div class="apply-btn">
+                                <a href="">
+                                    <button type="button" class="btn btn-primary">Apply!</button></a>
+                            </div>
+
+                        </div>
+
+                        {% endfor %}
+                    </div>
+                    <!-- Page numbers -->
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock%}

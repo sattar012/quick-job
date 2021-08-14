@@ -6,21 +6,23 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h3>We Found 10 jobs for you!</h3>
+          <h3>We Found jobs for you!</h3>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="home.html">Home</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'home'%}">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">
                 Browse Jobs
               </li>
             </ol>
           </nav>
-          <div class="searchjobs text-center">
-            <input type="text" class="form-control" placeholder="Search By Keyword" />
-            <input type="text" class="form-control" placeholder="Search By Company" />
-            <input type="text" class="form-control" placeholder="Search By Location" />
-            <input type="button" class="btn btn-primary" value="Find Job" />
-          </div>
+          <form action="{% url 'searched'%}" method="get">
+            <div class="searchjobs text-center">
+              <input type="text" class="form-control" placeholder="Search By Keyword" name="searched" id="searched">
+              <input type="text" class="form-control" placeholder="Search By Company" name="searched" id="searched">
+              <input type="text" class="form-control" placeholder="Search By Location" name="searched" id="searched">
+              <input type="submit" class="btn btn-primary" value="Find Job">
+            </div>
+          </form>
           <div class="margin-top-10">
             <ul class="categories-list">
               <li><a href="#">Accounting & Finance</a></li>
@@ -44,17 +46,23 @@
           <h6>Job Type</h6>
           <ul>
             <li>
-              {% for categ in items %}
-              <div class="checkbox">
-                <input type="checkbox" name="job-type" value=" " />
+              <div class="bd-example">
+                <div class="btn-group-vertical active" role="group" aria-label="Vertical button group">
+                  {% for categ in items %}
 
-                <a href="?category={{categ.id}}" style="color: black">
-                  <label for="job-type"><span class="checkbox-icon"></span>{{ categ.name}}</label></a>
-              </div>
-              {% endfor%}
+                  <a href="?category={{categ.id}}">
+                    <button type="button" class="btn btn-secondary">
+                      {{categ.name}}</button> </a>
+                  <br>
+
+                  {% endfor%}
+                </div>
             </li>
           </ul>
+
         </div>
+
+
 
         <!-- <div class="slider-widget">
             <h6>Salary Type</h6>
@@ -96,10 +104,10 @@
         <section id="Latest-jobs">
           <div class="container">
             {% for job in jobs.all %}
-            <div class="companydetails">
+            <div class="companydetails" onclick="window.location='{% url 'detail' job.id %}';" style="cursor: pointer;">
               <div class="job-update">
                 <h5>
-                  <b>{{ job.title}}<button type="button" class="btn btn-outline-info jtype">
+                  <b>{{ job.job_name}}<button type="button" class="btn btn-outline-info jtype">
                       {{ job.category}}
                     </button></b>
                 </h5>
@@ -108,11 +116,15 @@
                 <span>{{job.experience}} years </span>
                 <i class="fa fa-inr"></i> <span>{{job.salary}} p.a</span>
                 <i class="fa fa-map-marker"></i> <span>{{job.place}}</span>
+
               </div>
-              <div class="applybtn">
-                <button type="button" class="btn btn-primary">Apply!</button>
+              <div class="apply-btn">
+                <a href="">
+                  <button type="button" class="btn btn-primary">Apply!</button></a>
               </div>
+
             </div>
+
             {% endfor %}
           </div>
           <!-- Page numbers -->

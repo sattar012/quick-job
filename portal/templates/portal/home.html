@@ -34,12 +34,17 @@
     </div>
   </div>
 </section>
-<div class="search-job text-center">
-  <input type="text" class="form-control" placeholder="Search By Keyword">
-  <input type="text" class="form-control" placeholder="Search By Company">
-  <input type="text" class="form-control" placeholder="Search By Location">
-  <input type="button" class="btn btn-primary" value="Find Job">
-</div>
+<form action="{% url 'searched'%}" method="get">
+  <div class="search-job text-center">
+
+    <input type="text" class="form-control" placeholder="Search By Keyword" name="searched" id="searched">
+    <input type="text" class="form-control" placeholder="Search By Company" name="searched" id="searched">
+    <input type="text" class="form-control" placeholder="Search By Location" name="searched" id="searched">
+    <input type="submit" class="btn btn-primary" value="Find Job">
+
+  </div>
+</form>
+
 <br>
 
 <section id="job-catergory">
@@ -50,10 +55,10 @@
       <div class="col-lg-3">
         <div class="row">
           <div class="col">
-            <div class="stats-box">
-              <a href="#">
-                <img src="{{ job.image.url}}" /></a>
-              <h4>{{ job.type}}</h4>
+            <div class="stats-box" onclick="window.location='{% url 'catjobs' job.id %}';" style="cursor: pointer;">
+              <a href=""></a>
+              <img src="{{ job.cat_image.url}}" />
+              <h4>{{ job.cat_name }}</h4>
             </div>
           </div>
 
@@ -70,11 +75,11 @@
 
   <div class="owl-carousel owl-theme">
     {% for detail in details.all%}
-    <a href="{% url 'companydets' %}">
-      <div class="item">
-        <img src="{{ detail.icon.url}}" alt="">
-      </div>
-    </a>
+
+    <div class="item" onclick="window.location='{% url 'companydets' detail.id %}';" style="cursor: pointer;">
+      <img src="{{ detail.icon.url}}" alt="">
+    </div>
+
     {% endfor%}
   </div>
 </section>
@@ -127,8 +132,8 @@
             </p>
           </div>
           <div class="apply-btn">
-            <a href="jobdescript.html">
-              <button type="button" class="btn btn-primary">Apply!</button></a>
+
+            <button type="button" class="btn btn-primary">Apply!</button>
           </div>
         </div>
       </div>
@@ -167,24 +172,35 @@
   <h3>Latest Jobs</h3>
   <div class="container">
     {% for det in jobhome.all %}
-    <div class="companydetails">
+    <div class="companydetails" onclick="window.location='{% url 'detail' det.id %}';" style="cursor: pointer;">
+      <a href=""></a>
       <div class="job-update">
         <h5>
-          <b>{{ det.title}}<button type="button" class="btn btn-outline-info jtype">{{ det.category}} </button></b>
+          <b>{{ det.job_name}}<button type="button" class="btn btn-outline-info jtype">{{ det.category}} </button></b>
         </h5>
+        </a>
         <p>{{ det.company}}</p>
         <i class="fa fa-briefcase"></i>
         <span>{{det.experience}} years </span>
         <i class="fa fa-inr"></i> <span>{{det.salary}} p.a</span>
         <i class="fa fa-map-marker"></i> <span>{{det.place}}</span>
+
       </div>
+      <div class="apply-btn">
+        <a href="#">
+          <button type="button" class="btn btn-primary">Apply!</button></a>
+      </div>
+
     </div>
     {% endfor %}
   </div>
+
   <div class="All">
     <a href="{% url 'bjobs' %}">Browse All Jobs<i class="fa fa-arrow-right"></i></a>
   </div>
 </section>
+
+
 <section class="testimonials">
   <h3>Testimonials</h3>
   <div class="container">
@@ -265,62 +281,21 @@
   <div class="container">
     <h3> Recent Blogs</h3>
     <div class="row">
+      {% for post in allblog.all %}
       <div class="col-md-3">
         <div class="single-blog">
-          <p class="blog-meta">By Admin <span> June 30th, 2021</span></p>
-          <img src="https://cdn.pixabay.com/photo/2015/06/24/15/45/hands-820272__340.jpg" alt="">
-          <h4><a href="#">Learn How To Make A Website</a></h4>
-          <p class="blog-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.</p>
-          <p><a href="blog.html" class="read-more-btn">Read More</a>
+          <p class="blog-meta">By {{post.user}} <span> {{ post.pub_date}}</span></p>
+          <img src="{{ post.simage.url }}" alt="">
+          <h4><a href="#">{{ post.title}}</a></h4>
+          <p class="blog-text">{{ post.smallbody}}</p>
+          <p><a href="{% url 'allblogs' %}" class="read-more-btn">Read More</a>
             <span><i class="fa fa-thumbs-o-up"></i> 5k people liked,
               <i class="fa fa-comment-o"></i>3..
             </span>
           </p>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="single-blog">
-          <p class="blog-meta">By Admin <span> June 30th, 2021</span></p>
-          <img src="https://cdn.pixabay.com/photo/2015/05/31/10/55/man-791049__340.jpg" alt="">
-          <h4><a href="#">Learn How To Make A Website</a></h4>
-          <p class="blog-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.</p>
-          <p><a href="#" class="read-more-btn">Read More</a>
-            <span><i class="fa fa-thumbs-o-up"></i> 5k people liked,
-              <i class="fa fa-comment-o"></i>3..
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="single-blog">
-          <p class="blog-meta">By Admin <span> June 30th, 2021</span></p>
-          <img src="https://cdn.pixabay.com/photo/2016/11/29/06/16/kindle-1867751__340.jpg " alt="">
-          <h4><a href="#">Learn How To Make A Website</a></h4>
-          <p class="blog-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.</p>
-          <p><a href="#" class="read-more-btn">Read More</a>
-            <span><i class="fa fa-thumbs-o-up"></i> 5k people liked,
-              <i class="fa fa-comment-o"></i>3..
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="single-blog">
-          <p class="blog-meta">By Admin <span> June 30th, 2021</span></p>
-          <img src="https://cdn.pixabay.com/photo/2015/02/02/11/09/office-620822_960_720.jpg" alt="">
-          <h4><a href="#">Learn How To Make A Website</a></h4>
-          <p class="blog-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.</p>
-          <p><a href="#" class="read-more-btn">Read More</a>
-            <span><i class="fa fa-thumbs-o-up"></i> 5k people liked,
-              <i class="fa fa-comment-o"></i>3..
-            </span>
-          </p>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>

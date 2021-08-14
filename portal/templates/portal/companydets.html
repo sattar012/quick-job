@@ -2,23 +2,23 @@
 
 
 {% block content %}
-<section class="discription">
+<section class="description">
   <div id="titlebar">
     <div class="container">
       <div class="row">
         <div class="col-md-7 col-sm-12">
-          <!-- <h3>Microsoft</h3> -->
+          <h3>{{company_details.companyName}}</h3>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="home.html">Home</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'home'%}">Home</a></li>
               <li class="breadcrumb-item"><a href="#">Top Recruiter</a></li>
-              <!-- <li class="breadcrumb-item active" aria-current="page">Microsoft</li> -->
+              <li class="breadcrumb-item active" aria-current="page">{{company_details.companyName}}</li>
             </ol>
           </nav>
         </div>
         <div class="col-md-5 col-sm-12">
           <div class="right-side">
-            <a href="signin.html" class="btn btn-info bn">
+            <a href="{% url 'signup'%}" class="btn btn-info bn">
               Apply Now!
             </a>
           </div>
@@ -27,13 +27,12 @@
     </div>
   </div>
   <div class="container">
-    {% for data in details.all%}
     <div class="row">
 
       <div class="col-xl-8 col-lg-8 content-right-offset">
         <div class="single-page-section">
-          <h2>{{ data.companyName}}</h2>
-          <p>{{ data.description }}</p>
+          <h2>{{company_details.companyName}}</h2>
+          <p>{{ company_details.description }}</p>
           <div class="single-page-section">
             <h2>Location</h2>
             <iframe class="maps"
@@ -45,20 +44,20 @@
       <div class="col-xl-4 col-lg-4">
         <div class="job-box">
           <div class="job-box-head text-center">
-            {{ data.companyName}}
+            {{ company_details.companyName}}
           </div>
           <div class="job-box-inner">
             <div class="logo">
               <a href="#">
-                <img src="{{ data.icon.url}}" alt="">
+                <img src="{{ company_details.icon.url}}" alt="">
               </a>
             </div>
-            <h6 class="dets">Founded:{{data.founddate }}</h6>
-            <h6 class="dets">HeadQuaters: {{data.headquarters}} </h6>
-            <h6 class="dets">Founder:{{data.founder}}</h6>
-            <h6 class="dets">Revenue: {{data.revenue}}</h6>
-            <h6 class="dets">Number of employees:{{data.employees}} </h6>
-            <h6 class="dets">Website:{{data.url}} </h6>
+            <h6 class="dets">Founded:{{company_details.founddate }}</h6>
+            <h6 class="dets">HeadQuaters: {{company_details.headquarters}} </h6>
+            <h6 class="dets">Founder:{{company_details.founder}}</h6>
+            <h6 class="dets">Revenue: {{company_details.revenue}}</h6>
+            <h6 class="dets">Number of employees:{{company_details.employees}} </h6>
+            <h6 class="dets">Website:{{company_details.url}} </h6>
             <div class="d-grid gap-2 buttons">
               <button class="btn btn-info bn" type="button">Apply Now</button>
             </div>
@@ -66,7 +65,6 @@
         </div>
       </div>
     </div>
-    {% endfor %}
   </div>
 
 </section>
